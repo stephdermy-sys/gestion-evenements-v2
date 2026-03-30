@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Demande d'événement</title>
+    <title>Formulaire de demande d'événement</title>
 </head>
 <body>
 
-<h2>Formulaire de demande d'événement</h2>
+<h1>Formulaire de demande d'événement</h1>
 
 <form method="POST">
 
-<p>
-<strong>Date de la demande :</strong>
-{{ date_demande }}
-</p>
+<label>Date de la demande :</label><br>
+<input type="date" name="date_demande" value="" id="date_demande" readonly><br><br>
 
 <label>Nom :</label><br>
 <input type="text" name="nom" required><br><br>
@@ -20,17 +18,23 @@
 <label>Prénom :</label><br>
 <input type="text" name="prenom" required><br><br>
 
+<label>Adresse mail du demandeur :</label><br>
+<input type="email" name="email" required><br><br>
+
+<label>Numéro de téléphone du demandeur :</label><br>
+<input type="tel" name="telephone" required><br><br>
+
 <label>Service demandeur :</label><br>
 <input type="text" name="service" required><br><br>
 
 <label>Nom de l'événement :</label><br>
-<input type="text" name="nom_evenement" required><br><br>
+<input type="text" name="evenement" required><br><br>
 
 <label>Date souhaitée :</label><br>
 <input type="date" name="date_souhaitee" required><br><br>
 
 <label>Type de lieu souhaité :</label><br>
-<input type="text" name="type_lieu"><br><br>
+<input type="text" name="lieu"><br><br>
 
 <label>Nombre de participants :</label><br>
 <input type="number" name="participants"><br><br>
@@ -53,6 +57,12 @@ Envoyer la demande
 </button>
 
 </form>
+
+<script>
+    // Met automatiquement la date du jour
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date_demande').value = today;
+</script>
 
 </body>
 </html>
