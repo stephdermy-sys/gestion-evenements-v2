@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demande d'événement</title>
+</head>
+<body>
+
+<h2>Formulaire de demande d'événement</h2>
+
+<form method="POST">
+
+<p>
+<strong>Date de la demande :</strong>
+{{ date_demande }}
+</p>
+
+<label>Nom :</label><br>
+<input type="text" name="nom" required><br><br>
+
+<label>Prénom :</label><br>
+<input type="text" name="prenom" required><br><br>
+
+<label>Service demandeur :</label><br>
+<input type="text" name="service" required><br><br>
+
+<label>Nom de l'événement :</label><br>
+<input type="text" name="nom_evenement" required><br><br>
+
+<label>Date souhaitée :</label><br>
+<input type="date" name="date_souhaitee" required><br><br>
+
+<label>Type de lieu souhaité :</label><br>
+<input type="text" name="type_lieu"><br><br>
+
+<label>Nombre de participants :</label><br>
+<input type="number" name="participants"><br><br>
+
+<label>Invités :</label><br>
+<select name="invites">
+    <option>Internes</option>
+    <option>Externes</option>
+    <option>Internes et externes</option>
+</select><br><br>
+
+<label>Centre de coût :</label><br>
+<input type="text" name="centre_cout"><br><br>
+
+<label>Budget estimé :</label><br>
+<input type="number" name="budget"><br><br>
+
+<button type="submit">
+Envoyer la demande
+</button>
+
+</form>
+
+</body>
+</html>
