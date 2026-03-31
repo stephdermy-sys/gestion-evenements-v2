@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard des demandes</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        button {
+            padding: 5px 10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Dashboard des demandes d'événements</h1>
+
+<table>
+
+<tr>
+
+<th>Date</th>
+<th>Événement</th>
+<th>Service</th>
+<th>Participants</th>
+<th>Invités</th>
+<th>Statut</th>
+<th>Assigné à</th>
+<th>Actions</th>
+
+</tr>
+
+{% for d in demandes %}
+
+<tr>
+
+<td>{{ d[1] }}</td>
+<td>{{ d[7] }}</td>
+<td>{{ d[6] }}</td>
+<td>{{ d[10] }}</td>
+<td>{{ d[11] }}</td>
+
+<td>
+
+<form method="POST" action="/changer_statut">
+
+<input type="hidden" name="id" value="{{ d[0] }}">
+
+<select name="statut">
+
+<option {% if d[14] == "Nouveau" %}selected{% endif %}>
+Nouveau
+</option>
+
+<option {% if d[14] == "En cours" %}selected{% endif %}>
+En cours
+</option>
+
+<option {% if d[14] == "Terminé" %}selected{% endif %}>
+Terminé
+</option>
+
+</select>
+
+<button type="submit">
+Changer
+</button>
+
+</form>
+
+</td>
+
+<td>
+
+{{ d[15] }}
+
+</td>
+
+<td>
+
+<form method="POST" action="/assigner">
+
+<input type="hidden" name="id" value="{{ d[0] }}">
+
+<input type="text"
+name="prenom"
+placeholder="Votre prénom"
+required>
+
+<button type="submit">
+S’assigner
+</button>
+
+</form>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br><br>
+
+<a href="/">
+Nouvelle demande
+</a>
+
+</body>
+</html>
